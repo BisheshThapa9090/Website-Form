@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Content Collection - Engic Group</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary-gradient: linear-gradient(135deg, #2c5364 0%, #0f2027 100%);
+      --secondary-gradient: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+      --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      --border-color: #d2d2d7;
+      --bg-light: #f5f5f7;
+      --bg-lighter: #fafafa;
+      --success: #34c759;
+      --error: #ff3b30;
+      --warning: #ff9500;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.2);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: var(--text-primary);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius-lg);
+      padding: 50px;
+      box-shadow: var(--shadow-lg);
+      animation: fadeIn 0.6s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-gradient);
+      z-index: 1;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+    }
+    
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+    
+    .subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .intro {
+      background: var(--bg-light);
+      padding: 24px 28px;
+      border-radius: var(--radius-md);
+      margin-top: 28px;
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.7;
+      border-left: 4px solid #2c5364;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .intro strong {
+      color: #2c5364;
+      font-weight: 600;
+    }
+    
+    .section {
+      margin-bottom: 56px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      scroll-margin-top: 20px;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.15s; }
+    .section:nth-child(4) { animation-delay: 0.2s; }
+    .section:nth-child(5) { animation-delay: 0.25s; }
+    .section:nth-child(6) { animation-delay: 0.3s; }
+    .section:nth-child(7) { animation-delay: 0.35s; }
+    .section:nth-child(8) { animation-delay: 0.4s; }
+    
+    @keyframes slideUp {
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+      letter-spacing: -0.4px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg-light);
+    }
+    
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--primary-gradient);
+      color: white;
+      border-radius: var(--radius-md);
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+    }
+    
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    
+    .form-group {
+      margin-bottom: 28px;
+      position: relative;
+    }
+    
+    label {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      transition: var(--transition);
+    }
+    
+    .required {
+      color: var(--error);
+      margin-left: 4px;
+      font-weight: 700;
+    }
+    
+    .helper-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      font-style: normal;
+      line-height: 1.4;
+    }
+    
+    input, textarea, select {
+      width: 100%;
+      padding: 16px 18px;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      font-family: inherit;
+      background: white;
+      transition: var(--transition);
+      outline: none;
+      color: var(--text-primary);
+    }
+    
+    input:focus, textarea:focus, select:focus {
+      border-color: #2c5364;
+      box-shadow: 0 0 0 4px rgba(44, 83, 100, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    input::placeholder, textarea::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.7;
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+      font-family: inherit;
+      line-height: 1.6;
+      padding: 18px;
+    }
+    
+    textarea.large {
+      min-height: 200px;
+    }
+    
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='14' height='9' viewBox='0 0 14 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L7 7.5L13 1.5' stroke='%2386868b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 48px;
+    }
+    
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .file-upload {
+      position: relative;
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 36px 24px;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--bg-lighter);
+    }
+    
+    .file-upload:hover {
+      border-color: #2c5364;
+      background: var(--bg-light);
+      transform: translateY(-2px);
+    }
+    
+    .file-upload.dragover {
+      border-color: #2c5364;
+      background: rgba(44, 83, 100, 0.05);
+      transform: scale(1.02);
+    }
+    
+    .file-upload input[type="file"] {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+    }
+    
+    .upload-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+      color: #2c5364;
+    }
+    
+    .file-upload strong {
+      display: block;
+      font-size: 16px;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    
+    .file-upload .helper-text {
+      margin-top: 4px;
+    }
+    
+    .repeater-section {
+      background: var(--bg-lighter);
+      padding: 28px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      position: relative;
+      animation: slideIn 0.4s ease;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .repeater-section:hover {
+      border-color: rgba(44, 83, 100, 0.2);
+      box-shadow: var(--shadow-md);
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes slideOut {
+      to {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.98);
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    }
+    
+    .repeater-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .repeater-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    
+    .add-btn {
+      padding: 14px 28px;
+      background: var(--primary-gradient);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .add-btn:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    
+    .add-btn:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+    
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(40, 40);
+      }
+    }
+    
+    .add-btn:hover {
+      background: var(--secondary-gradient);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(44, 83, 100, 0.3);
+    }
+    
+    .remove-btn {
+      padding: 10px 18px;
+      background: linear-gradient(135deg, var(--error) 0%, #d32f2f 100%);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .remove-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+    }
+    
+    .remove-btn:active {
+      transform: translateY(0);
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 20px;
+      background: var(--primary-gradient);
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 32px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: -0.2px;
+    }
+    
+    .submit-btn:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    
+    .submit-btn:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(44, 83, 100, 0.4);
+      background: var(--secondary-gradient);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    
+    .note {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    
+    .checkbox-item {
+      position: relative;
+    }
+    
+    .checkbox-item input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .checkbox-item label {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      margin: 0;
+      background: white;
+    }
+    
+    .checkbox-item label:before {
+      content: '';
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      margin-right: 14px;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    
+    .checkbox-item input:checked + label {
+      border-color: #2c5364;
+      background: rgba(44, 83, 100, 0.05);
+    }
+    
+    .checkbox-item input:checked + label:before {
+      background: #2c5364;
+      border-color: #2c5364;
+      background-image: url("data:image/svg+xml,%3Csvg width='14' height='12' viewBox='0 0 14 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 6L5 10L13 1.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    .checkbox-item label:hover {
+      border-color: #2c5364;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 48px 32px;
+      background: var(--bg-lighter);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      border: 2px dashed var(--border-color);
+    }
+    
+    .empty-state-icon {
+      font-size: 52px;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
+    
+    .repeater-container {
+      margin-bottom: 24px;
+    }
+    
+    .repeater-section.removing {
+      animation: slideOut 0.3s ease forwards;
+    }
+    
+    .counter-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      background: var(--primary-gradient);
+      color: white;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 0 8px;
+      margin-left: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .section-header h2 {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    
+    .counter-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-light);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 32px 24px;
+      }
+      
+      h1 {
+        font-size: 32px;
+      }
+      
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      
+      .repeater-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      
+      .repeater-header .remove-btn {
+        align-self: stretch;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 12px;
+      }
+      
+      .container {
+        padding: 24px 20px;
+        border-radius: 16px;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      h2 {
+        font-size: 22px;
+      }
+      
+      .section {
+        margin-bottom: 48px;
+      }
+    }
+    
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    
+    .success-message.show {
+      display: block;
+      animation: fadeIn 0.6s ease;
+    }
+    
+    .success-icon {
+      width: 120px;
+      height: 120px;
+      background: var(--primary-gradient);
+      border-radius: 50%;
+      margin: 0 auto 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    @keyframes scaleIn {
+      0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
+    }
+    
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      flex-direction: column;
+      gap: 24px;
+    }
+    
+    .loading-overlay.show {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .spinner {
+      width: 70px;
+      height: 70px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #2c5364;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .undo-notification {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text-primary);
+      color: white;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow-lg);
+      z-index: 1001;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-size: 15px;
+      max-width: 400px;
+      width: 90%;
+    }
+    
+    .undo-notification.show {
+      transform: translateX(-50%) translateY(0);
+    }
+    
+    .undo-btn {
+      background: #2c5364;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    
+    .undo-btn:hover {
+      background: #3a6c82;
+      transform: translateY(-1px);
+    }
+    
+    .haptic-feedback {
+      animation: haptic 0.15s ease;
+    }
+    
+    @keyframes haptic {
+      0%, 100% { transform: translateX(0); }
+      33% { transform: translateX(-3px); }
+      66% { transform: translateX(3px); }
+    }
+    
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .scroll-progress.active {
+      transform: translateY(0);
+    }
+    
+    .scroll-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #2c5364, #0f2027);
+      width: 0%;
+      transition: width 0.1s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .scroll-progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .section-indicator {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .section-indicator.active {
+      opacity: 1;
+    }
+    
+    .indicator-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .indicator-dot.active {
+      background: white;
+      transform: scale(1.4);
+      box-shadow: 0 0 0 3px rgba(44, 83, 100, 0.2);
+    }
+    
+    .indicator-dot:hover {
+      transform: scale(1.3);
+      background: white;
+    }
+    
+    .indicator-dot:after {
+      content: attr(data-title);
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .indicator-dot:hover:after {
+      opacity: 1;
+    }
+    
+    .file-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    
+    .preview-item {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .preview-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .remove-preview {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 20px;
+      height: 20px;
+      background: var(--error);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    
+    .preview-item:hover .remove-preview {
+      opacity: 1;
+    }
+    
+    @media (max-width: 1024px) {
+      .section-indicator {
+        right: 16px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-indicator {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress">
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+</div>
+
+<div class="section-indicator" id="sectionIndicator">
+  <div class="indicator-dot active" data-title="Company Overview" data-section="1"></div>
+  <div class="indicator-dot" data-title="Contact Info" data-section="2"></div>
+  <div class="indicator-dot" data-title="Services" data-section="3"></div>
+  <div class="indicator-dot" data-title="Projects" data-section="4"></div>
+  <div class="indicator-dot" data-title="Team" data-section="5"></div>
+  <div class="indicator-dot" data-title="Values" data-section="6"></div>
+  <div class="indicator-dot" data-title="Design" data-section="7"></div>
+  <div class="indicator-dot" data-title="Additional" data-section="8"></div>
+  <div class="indicator-dot" data-title="Submit" data-section="9"></div>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div style="font-size: 18px; color: #2c5364; font-weight: 700; letter-spacing: 0.5px;">Processing Your Submission...</div>
+  <div style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Please wait while we save your information</div>
+</div>
+
+<div class="undo-notification" id="undoNotification">
+  <span>Section removed</span>
+  <button class="undo-btn" id="undoButton">Undo</button>
+</div>
+
+<div class="container">
+  <form id="websiteForm" action="https://formspree.io/f/mkogzyqv" method="POST">
+    <input type="hidden" name="_subject" value="New Website Content Submission - Engic Group">
+    <input type="hidden" name="_replyto" value="__replyto__">
+    <input type="hidden" name="_cc" value="">
+    <input type="hidden" name="_format" value="plain">
+    
+    <div id="formContent">
+      <div class="header">
+        <h1>Website Content Collection</h1>
+        <p class="subtitle">Engic Group - Engineering & Architecture</p>
+        <div class="intro">
+          <strong>Hello Abhiyan!</strong> To build your professional website, I need detailed information about your company, services, projects, and team. Please fill this form carefully - the more detail you provide, the better your website will be. This should take about 20-30 minutes.
+        </div>
+      </div>
+      
+      <!-- SECTION 1: Company Overview -->
+      <div class="section" id="section-1" data-section="1">
+        <h2><span class="section-number">1</span> Company Overview</h2>
+        <p class="section-desc">Basic information about Engic Group</p>
+        
+        <div class="form-group">
+          <label>Company Full Name <span class="required">*</span></label>
+          <input type="text" name="company_name" placeholder="Enter company name" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Company Tagline/Slogan <span class="required">*</span></label>
+          <input type="text" name="company_tagline" placeholder="e.g., Engineering Excellence. Architectural Vision. Trusted Execution." required>
+          <p class="helper-text">This appears prominently on your homepage</p>
+        </div>
+        
+        <div class="form-group">
+          <label>Company Description <span class="required">*</span></label>
+          <textarea class="large" name="company_description" placeholder="Describe what your company does and what makes it unique (1-2 paragraphs)" required></textarea>
+        </div>
+        
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Years in Business <span class="required">*</span></label>
+            <input type="text" name="years_in_business" placeholder="e.g., 10+" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Total Projects Completed <span class="required">*</span></label>
+            <input type="text" name="total_projects" placeholder="e.g., 200+" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Key Achievements / Stats</label>
+          <textarea name="achievements" placeholder="Any other impressive numbers? (e.g., '500+ Happy Clients', 'Zero Structural Failures', etc.)"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Company Logo</label>
+          <div class="file-upload">
+            <div class="upload-icon">🏢</div>
+            <div><strong>Upload Company Logo</strong></div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">High-resolution PNG, SVG, or JPEG. Transparent background preferred.</div>
+            <input type="file" name="company_logo" accept="image/*">
+          </div>
+        </div>
+      </div>
+      
+      <!-- SECTION 2: Contact Information -->
+      <div class="section" id="section-2" data-section="2">
+        <h2><span class="section-number">2</span> Contact Information</h2>
+        <p class="section-desc">How clients can reach you</p>
+        
+        <div class="form-group">
+          <label>Primary Phone Number <span class="required">*</span></label>
+          <input type="tel" name="primary_phone" placeholder="+977-XXX-XXXXXXX" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Additional Phone Numbers</label>
+          <input type="tel" name="additional_phones" placeholder="Add alternate numbers if any">
+        </div>
+        
+        <div class="form-group">
+          <label>Email Address <span class="required">*</span></label>
+          <input type="email" name="company_email" placeholder="company@example.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Office Address <span class="required">*</span></label>
+          <input type="text" name="office_address" placeholder="Street, City, Country" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Google Maps Link (Optional)</label>
+          <input type="url" name="google_maps" placeholder="https://maps.google.com/...">
+          <p class="helper-text">Right-click your location on Google Maps → Share → Copy link</p>
+        </div>
+        
+        <div class="form-group">
+          <label>Business Hours</label>
+          <input type="text" name="business_hours" placeholder="e.g., Sunday - Friday: 9 AM - 6 PM">
+        </div>
+        
+        <div class="form-group">
+          <label>Social Media Links (Optional)</label>
+          <input type="url" name="facebook" placeholder="Facebook URL" style="margin-bottom: 12px;">
+          <input type="url" name="instagram" placeholder="Instagram URL" style="margin-bottom: 12px;">
+          <input type="url" name="linkedin" placeholder="LinkedIn URL">
+        </div>
+      </div>
+      
+      <!-- SECTION 3: Services -->
+      <div class="section" id="section-3" data-section="3">
+        <div class="section-header">
+          <h2><span class="section-number">3</span> Services You Offer</h2>
+          <div class="counter-container">
+            <span class="section-desc" style="margin: 0;">Services added:</span>
+            <span id="servicesCounter" class="counter-badge">1</span>
+          </div>
+        </div>
+        <p class="section-desc">List all services with detailed descriptions</p>
+        
+        <div class="repeater-container" id="servicesContainer">
+          <!-- Default Service Form -->
+          <div class="repeater-section" data-type="service">
+            <input type="hidden" name="service_index[]" value="1">
+            <div class="repeater-header">
+              <span class="repeater-title">Service #1</span>
+              <button type="button" class="remove-btn" data-type="service">Remove</button>
+            </div>
+            
+            <div class="form-group">
+              <label>Service Name <span class="required">*</span></label>
+              <input type="text" name="service_name[]" placeholder="e.g., Architectural & Structural Design" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Service Icon/Emoji</label>
+              <input type="text" name="service_icon[]" placeholder="e.g., 🏗️" maxlength="2">
+              <p class="helper-text">Single emoji that represents this service</p>
+            </div>
+            
+            <div class="form-group">
+              <label>Short Description <span class="required">*</span></label>
+              <input type="text" name="service_short_desc[]" placeholder="One-line summary" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Detailed Description <span class="required">*</span></label>
+              <textarea name="service_details[]" placeholder="Explain what this service includes, benefits, process, etc." required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>Key Features (one per line)</label>
+              <textarea name="service_features[]" placeholder="• Seismic-resistant structural design
+• Modern architectural planning  
+• Building code compliance"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>Call-to-Action Button Text</label>
+              <input type="text" name="service_cta[]" placeholder="e.g., Get Design Quote">
+            </div>
+          </div>
+        </div>
+        
+        <button type="button" class="add-btn" id="addServiceBtn">
+          <span>+</span>
+          <span>Add Another Service</span>
+        </button>
+        <p class="helper-text" style="margin-top: 12px;">Add all 9-10 services you offer</p>
+      </div>
+      
+      <!-- SECTION 4: Projects Portfolio -->
+      <div class="section" id="section-4" data-section="4">
+        <div class="section-header">
+          <h2><span class="section-number">4</span> Featured Projects</h2>
+          <div class="counter-container">
+            <span class="section-desc" style="margin: 0;">Projects added:</span>
+            <span id="projectsCounter" class="counter-badge">1</span>
+          </div>
+        </div>
+        <p class="section-desc">Showcase 4-6 of your best completed projects</p>
+        
+        <div class="repeater-container" id="projectsContainer">
+          <!-- Default Project Form -->
+          <div class="repeater-section" data-type="project">
+            <input type="hidden" name="project_index[]" value="1">
+            <div class="repeater-header">
+              <span class="repeater-title">Project #1</span>
+              <button type="button" class="remove-btn" data-type="project">Remove</button>
+            </div>
+            
+            <div class="form-group">
+              <label>Project Name <span class="required">*</span></label>
+              <input type="text" name="project_name[]" placeholder="e.g., The Sapphire Villa" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Location <span class="required">*</span></label>
+              <input type="text" name="project_location[]" placeholder="e.g., Lalitpur" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Project Category <span class="required">*</span></label>
+              <select name="project_category[]" required>
+                <option value="">Select category</option>
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Renovation</option>
+                <option>Infrastructure</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>Project Description <span class="required">*</span></label>
+              <textarea name="project_description[]" placeholder="2-3 sentences about the project, what made it special, challenges solved" required></textarea>
+            </div>
+            
+            <div class="grid-2">
+              <div class="form-group">
+                <label>Project Size</label>
+                <input type="text" name="project_size[]" placeholder="e.g., 3BHK, 5000 sq ft">
+              </div>
+              
+              <div class="form-group">
+                <label>Completion Year</label>
+                <input type="text" name="project_year[]" placeholder="e.g., 2023">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Key Features (one per line)</label>
+              <textarea name="project_features[]" placeholder="• Smart home integration
+• Earthquake-resistant structure
+• Energy-efficient design"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>Project Images</label>
+              <div class="file-upload">
+                <div class="upload-icon">📸</div>
+                <div><strong>Upload Project Visuals</strong></div>
+                <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">High-quality images showcasing the project (3-6 photos recommended)</div>
+                <input type="file" name="project_images[]" accept="image/*" multiple>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button type="button" class="add-btn" id="addProjectBtn">
+          <span>+</span>
+          <span>Add Another Project</span>
+        </button>
+      </div>
+      
+      <!-- SECTION 5: Team Members -->
+      <div class="section" id="section-5" data-section="5">
+        <div class="section-header">
+          <h2><span class="section-number">5</span> Team Members</h2>
+          <div class="counter-container">
+            <span class="section-desc" style="margin: 0;">Team members added:</span>
+            <span id="teamCounter" class="counter-badge">1</span>
+          </div>
+        </div>
+        <p class="section-desc">Information about leadership and key team members</p>
+        
+        <div class="repeater-container" id="teamContainer">
+          <!-- Default Team Member Form -->
+          <div class="repeater-section" data-type="team">
+            <input type="hidden" name="team_index[]" value="1">
+            <div class="repeater-header">
+              <span class="repeater-title">Team Member #1</span>
+              <button type="button" class="remove-btn" data-type="team">Remove</button>
+            </div>
+            
+            <div class="form-group">
+              <label>Full Name <span class="required">*</span></label>
+              <input type="text" name="team_name[]" placeholder="e.g., Abhiyan Thapa" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Job Title/Position <span class="required">*</span></label>
+              <input type="text" name="team_position[]" placeholder="e.g., Founder & Structural Engineer" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Professional Bio <span class="required">*</span></label>
+              <textarea class="large" name="team_bio[]" required placeholder="Brief professional background, expertise, vision, and what drives them (2-3 paragraphs)"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>Personal Quote/Philosophy</label>
+              <input type="text" name="team_quote[]" placeholder='e.g., "We don\'t just build homes; we build trust."'>
+            </div>
+            
+            <div class="grid-2">
+              <div class="form-group">
+                <label>Years of Experience</label>
+                <input type="text" name="team_experience[]" placeholder="e.g., 10+">
+              </div>
+              
+              <div class="form-group">
+                <label>Education/Qualifications</label>
+                <input type="text" name="team_education[]" placeholder="e.g., B.E. Civil Engineering">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Key Specializations</label>
+              <input type="text" name="team_specializations[]" placeholder="e.g., Seismic Engineering, Municipal Compliance">
+            </div>
+            
+            <div class="form-group">
+              <label>Professional Headshot</label>
+              <div class="file-upload">
+                <div class="upload-icon">👔</div>
+                <div><strong>Upload Professional Photograph</strong></div>
+                <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">High-resolution professional portrait with formal business attire</div>
+                <input type="file" name="team_photo[]" accept="image/*">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Email Address (Optional)</label>
+              <input type="email" name="team_email[]" placeholder="Personal email if you want it public">
+            </div>
+            
+            <div class="form-group">
+              <label>LinkedIn Profile (Optional)</label>
+              <input type="url" name="team_linkedin[]" placeholder="https://linkedin.com/in/...">
+            </div>
+          </div>
+        </div>
+        
+        <button type="button" class="add-btn" id="addTeamBtn">
+          <span>+</span>
+          <span>Add Another Team Member</span>
+        </button>
+        <p class="helper-text" style="margin-top: 12px;">Add all key team members who should appear on the website</p>
+      </div>
+      
+      <!-- SECTION 6: Company Values & Commitments -->
+      <div class="section" id="section-6" data-section="6">
+        <h2><span class="section-number">6</span> Company Values & Guarantees</h2>
+        <p class="section-desc">What makes you trustworthy and different</p>
+        
+        <div class="form-group">
+          <label>Quality Commitment Statement <span class="required">*</span></label>
+          <textarea name="quality_commitment" required placeholder="Describe your commitment to quality, safety standards, materials used, supervision practices"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Warranty/Guarantee Details</label>
+          <textarea name="warranty_details" placeholder="e.g., 10-Year Structural Integrity Guarantee, Lifetime Support, etc."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Certifications & Licenses</label>
+          <textarea name="certifications" placeholder="List any professional licenses, certifications, memberships, awards"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Core Values (3-5 key principles)</label>
+          <textarea name="core_values" placeholder="What principles guide your work? e.g.,
+• Safety First
+• Transparent Communication  
+• Sustainable Practices
+• Client-Centric Approach"></textarea>
+        </div>
+      </div>
+      
+      <!-- SECTION 7: Website Preferences -->
+      <div class="section" id="section-7" data-section="7">
+        <h2><span class="section-number">7</span> Website Design Preferences</h2>
+        <p class="section-desc">Help me understand your vision for the website</p>
+        
+        <div class="form-group">
+          <label>Preferred Color Scheme</label>
+          <input type="text" name="color_scheme" placeholder="e.g., Professional blues and grays, or warm earth tones">
+          <p class="helper-text">I'll create a professional palette based on your preference</p>
+        </div>
+        
+        <div class="form-group">
+          <label>Websites You Like (Inspiration)</label>
+          <textarea name="website_inspiration" placeholder="Share 2-3 website URLs you find visually appealing or well-designed"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Tone/Personality of Website</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="tone1" name="tone[]" value="professional">
+              <label for="tone1">Professional & Corporate</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="tone2" name="tone[]" value="modern">
+              <label for="tone2">Modern & Innovative</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="tone3" name="tone[]" value="warm">
+              <label for="tone3">Warm & Approachable</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="tone4" name="tone[]" value="premium">
+              <label for="tone4">Premium & Luxury</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Key Features You Want</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="feat1" name="features[]" value="contact_form" checked>
+              <label for="feat1">Contact Form / Inquiry Form</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="feat2" name="features[]" value="portfolio" checked>
+              <label for="feat2">Project Gallery/Portfolio</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="feat3" name="features[]" value="testimonials">
+              <label for="feat3">Client Testimonials Section</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="feat4" name="features[]" value="blog">
+              <label for="feat4">Blog/News Section</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="feat5" name="features[]" value="calculator">
+              <label for="feat5">Service Request/Quote Calculator</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="feat6" name="features[]" value="chat">
+              <label for="feat6">Live Chat Support</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Any Specific Requests or Must-Haves?</label>
+          <textarea name="specific_requests" placeholder="Anything else you specifically want on the website?"></textarea>
+        </div>
+      </div>
+      
+      <!-- SECTION 8: Additional Information -->
+      <div class="section" id="section-8" data-section="8">
+        <h2><span class="section-number">8</span> Additional Information</h2>
+        <p class="section-desc">Any other details that would help build your website</p>
+        
+        <div class="form-group">
+          <label>Company History/Story</label>
+          <textarea name="company_history" class="large" placeholder="How did your company start? What's your journey?"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Awards, Recognition, or Media Mentions</label>
+          <textarea name="awards_media" placeholder="Any awards won, newspaper features, TV appearances, or recognition received?"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Service Area Coverage</label>
+          <input type="text" name="service_area" placeholder="e.g., Kathmandu Valley, All of Nepal, etc.">
+        </div>
+        
+        <div class="form-group">
+          <label>Additional Files/Documents</label>
+          <div class="file-upload">
+            <div class="upload-icon">📚</div>
+            <div><strong>Upload Supporting Documents</strong></div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Brochures, certificates, previous marketing materials, etc.</div>
+            <input type="file" name="additional_files[]" multiple>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SECTION 9: Final Details -->
+      <div class="section" id="section-9" data-section="9">
+        <h2><span class="section-number">9</span> Submission Details</h2>
+        
+        <div class="form-group">
+          <label>Your Name <span class="required">*</span></label>
+          <input type="text" name="submitter_name" required placeholder="Person filling out this form">
+        </div>
+        
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Your Email <span class="required">*</span></label>
+            <input type="email" name="_replyto" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Your Phone <span class="required">*</span></label>
+            <input type="tel" name="submitter_phone" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Target Website Launch Date</label>
+          <input type="date" name="launch_date">
+        </div>
+        
+        <div class="form-group">
+          <label>Additional Comments or Questions</label>
+          <textarea name="additional_comments" placeholder="Anything else I should know?"></textarea>
+        </div>
+      </div>
+      
+      <button type="submit" class="submit-btn">Submit Website Information</button>
+      <p class="note">
+        <strong>Thank you for your time!</strong><br>
+        I'll review all this information and get back to you within 2 business days with mockups and a timeline.
+      </p>
+    </div>
+    
+    <div id="successMessage" class="success-message">
+      <div class="success-icon">✓</div>
+      <h2 style="color: var(--text-primary); margin-bottom: 16px;">Information Successfully Submitted!</h2>
+      <p class="subtitle" style="max-width: 400px; margin: 0 auto; font-size: 16px; line-height: 1.6;">Thank you for providing comprehensive details. I'll start working on your website and will be in touch soon with the initial designs and timeline.</p>
+    </div>
+  </form>
+</div>
+
+<script>
+  // State management
+  const state = {
+    services: [1],
+    projects: [1],
+    teamMembers: [1],
+    currentRemovedItem: null,
+    currentSection: 1,
+    scrollProgress: 0
+  };
+
+  // DOM Elements
+  const form = document.getElementById('websiteForm');
+  const successMessage = document.getElementById('successMessage');
+  const formContent = document.getElementById('formContent');
+  const loadingOverlay = document.getElementById('loadingOverlay');
+  const undoNotification = document.getElementById('undoNotification');
+  const undoButton = document.getElementById('undoButton');
+  const scrollProgress = document.getElementById('scrollProgress');
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  const sectionIndicator = document.getElementById('sectionIndicator');
+  const indicatorDots = document.querySelectorAll('.indicator-dot');
+
+  // Counter elements
+  const servicesCounter = document.getElementById('servicesCounter');
+  const projectsCounter = document.getElementById('projectsCounter');
+  const teamCounter = document.getElementById('teamCounter');
+
+  // Templates
+  const serviceTemplate = `
+    <div class="repeater-section" data-type="service">
+      <input type="hidden" name="service_index[]" value="{number}">
+      <div class="repeater-header">
+        <span class="repeater-title">Service #{number}</span>
+        <button type="button" class="remove-btn" data-type="service">Remove</button>
+      </div>
+      
+      <div class="form-group">
+        <label>Service Name <span class="required">*</span></label>
+        <input type="text" name="service_name[]" placeholder="e.g., Architectural & Structural Design" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Service Icon/Emoji</label>
+        <input type="text" name="service_icon[]" placeholder="e.g., 🏗️" maxlength="2">
+        <p class="helper-text">Single emoji that represents this service</p>
+      </div>
+      
+      <div class="form-group">
+        <label>Short Description <span class="required">*</span></label>
+        <input type="text" name="service_short_desc[]" placeholder="One-line summary" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Detailed Description <span class="required">*</span></label>
+        <textarea name="service_details[]" placeholder="Explain what this service includes, benefits, process, etc." required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>Key Features (one per line)</label>
+        <textarea name="service_features[]" placeholder="• Seismic-resistant structural design
+• Modern architectural planning  
+• Building code compliance"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>Call-to-Action Button Text</label>
+        <input type="text" name="service_cta[]" placeholder="e.g., Get Design Quote">
+      </div>
+    </div>
+  `;
+
+  const projectTemplate = `
+    <div class="repeater-section" data-type="project">
+      <input type="hidden" name="project_index[]" value="{number}">
+      <div class="repeater-header">
+        <span class="repeater-title">Project #{number}</span>
+        <button type="button" class="remove-btn" data-type="project">Remove</button>
+      </div>
+      
+      <div class="form-group">
+        <label>Project Name <span class="required">*</span></label>
+        <input type="text" name="project_name[]" placeholder="e.g., The Sapphire Villa" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Location <span class="required">*</span></label>
+        <input type="text" name="project_location[]" placeholder="e.g., Lalitpur" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Project Category <span class="required">*</span></label>
+        <select name="project_category[]" required>
+          <option value="">Select category</option>
+          <option>Residential</option>
+          <option>Commercial</option>
+          <option>Renovation</option>
+          <option>Infrastructure</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Project Description <span class="required">*</span></label>
+        <textarea name="project_description[]" placeholder="2-3 sentences about the project, what made it special, challenges solved" required></textarea>
+      </div>
+      
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Project Size</label>
+          <input type="text" name="project_size[]" placeholder="e.g., 3BHK, 5000 sq ft">
+        </div>
+        
+        <div class="form-group">
+          <label>Completion Year</label>
+          <input type="text" name="project_year[]" placeholder="e.g., 2023">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Key Features (one per line)</label>
+        <textarea name="project_features[]" placeholder="• Smart home integration
+• Earthquake-resistant structure
+• Energy-efficient design"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>Project Images</label>
+        <div class="file-upload">
+          <div class="upload-icon">📸</div>
+          <div><strong>Upload Project Visuals</strong></div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">High-quality images showcasing the project (3-6 photos recommended)</div>
+          <input type="file" name="project_images[]" accept="image/*" multiple>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const teamTemplate = `
+    <div class="repeater-section" data-type="team">
+      <input type="hidden" name="team_index[]" value="{number}">
+      <div class="repeater-header">
+        <span class="repeater-title">Team Member #{number}</span>
+        <button type="button" class="remove-btn" data-type="team">Remove</button>
+      </div>
+      
+      <div class="form-group">
+        <label>Full Name <span class="required">*</span></label>
+        <input type="text" name="team_name[]" placeholder="e.g., Abhiyan Thapa" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Job Title/Position <span class="required">*</span></label>
+        <input type="text" name="team_position[]" placeholder="e.g., Founder & Structural Engineer" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Professional Bio <span class="required">*</span></label>
+        <textarea class="large" name="team_bio[]" required placeholder="Brief professional background, expertise, vision, and what drives them (2-3 paragraphs)"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>Personal Quote/Philosophy</label>
+        <input type="text" name="team_quote[]" placeholder='e.g., "We don\\'t just build homes; we build trust."'>
+      </div>
+      
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Years of Experience</label>
+          <input type="text" name="team_experience[]" placeholder="e.g., 10+">
+        </div>
+        
+        <div class="form-group">
+          <label>Education/Qualifications</label>
+          <input type="text" name="team_education[]" placeholder="e.g., B.E. Civil Engineering">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Key Specializations</label>
+        <input type="text" name="team_specializations[]" placeholder="e.g., Seismic Engineering, Municipal Compliance">
+      </div>
+      
+      <div class="form-group">
+        <label>Professional Headshot</label>
+        <div class="file-upload">
+          <div class="upload-icon">👔</div>
+          <div><strong>Upload Professional Photograph</strong></div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">High-resolution professional portrait with formal business attire</div>
+          <input type="file" name="team_photo[]" accept="image/*">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Email Address (Optional)</label>
+        <input type="email" name="team_email[]" placeholder="Personal email if you want it public">
+      </div>
+      
+      <div class="form-group">
+        <label>LinkedIn Profile (Optional)</label>
+        <input type="url" name="team_linkedin[]" placeholder="https://linkedin.com/in/...">
+      </div>
+    </div>
+  `;
+
+  // Initialize counters
+  function updateCounters() {
+    servicesCounter.textContent = state.services.length;
+    projectsCounter.textContent = state.projects.length;
+    teamCounter.textContent = state.teamMembers.length;
+  }
+
+  // Add service
+  function addService() {
+    const container = document.getElementById('servicesContainer');
+    const nextNumber = state.services.length + 1;
+    state.services.push(nextNumber);
+    
+    const newService = document.createElement('div');
+    newService.innerHTML = serviceTemplate.replace(/{number}/g, nextNumber);
+    container.appendChild(newService);
+    
+    updateCounters();
+    addHapticFeedback();
+    
+    // Smooth scroll to new service
+    setTimeout(() => {
+      newService.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 10);
+  }
+
+  // Add project
+  function addProject() {
+    const container = document.getElementById('projectsContainer');
+    const nextNumber = state.projects.length + 1;
+    state.projects.push(nextNumber);
+    
+    const newProject = document.createElement('div');
+    newProject.innerHTML = projectTemplate.replace(/{number}/g, nextNumber);
+    container.appendChild(newProject);
+    
+    updateCounters();
+    addHapticFeedback();
+    
+    // Smooth scroll to new project
+    setTimeout(() => {
+      newProject.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 10);
+  }
+
+  // Add team member
+  function addTeamMember() {
+    const container = document.getElementById('teamContainer');
+    const nextNumber = state.teamMembers.length + 1;
+    state.teamMembers.push(nextNumber);
+    
+    const newTeam = document.createElement('div');
+    newTeam.innerHTML = teamTemplate.replace(/{number}/g, nextNumber);
+    container.appendChild(newTeam);
+    
+    updateCounters();
+    addHapticFeedback();
+    
+    // Smooth scroll to new team member
+    setTimeout(() => {
+      newTeam.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 10);
+  }
+
+  // Remove item with undo option
+  function removeItem(element, type) {
+    const container = element.closest('.repeater-section');
+    const title = container.querySelector('.repeater-title').textContent;
+    
+    // Store removed item for undo
+    state.currentRemovedItem = {
+      element: container,
+      type: type,
+      title: title,
+      html: container.outerHTML,
+      position: Array.from(container.parentNode.children).indexOf(container),
+      count: type === 'service' ? state.services.length : 
+             type === 'project' ? state.projects.length : 
+             state.teamMembers.length
+    };
+    
+    // Add removing animation
+    container.classList.add('removing');
+    
+    // Remove from state arrays
+    if (type === 'service') {
+      state.services.pop();
+    } else if (type === 'project') {
+      state.projects.pop();
+    } else if (type === 'team') {
+      state.teamMembers.pop();
+    }
+    
+    // Update counters immediately
+    updateCounters();
+    
+    // Remove element after animation
+    setTimeout(() => {
+      container.remove();
+    }, 300);
+    
+    // Show undo notification
+    showUndoNotification(title);
+    addHapticFeedback();
+  }
+
+  // Show undo notification
+  function showUndoNotification(title) {
+    undoNotification.querySelector('span').textContent = `${title} removed`;
+    undoNotification.classList.add('show');
+    
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+      hideUndoNotification();
+    }, 5000);
+  }
+
+  // Hide undo notification
+  function hideUndoNotification() {
+    undoNotification.classList.remove('show');
+    state.currentRemovedItem = null;
+  }
+
+  // Undo last removal
+  function undoRemove() {
+    if (!state.currentRemovedItem) return;
+    
+    const { type, html, position, count } = state.currentRemovedItem;
+    let container;
+    
+    if (type === 'service') {
+      container = document.getElementById('servicesContainer');
+      state.services.push(count);
+    } else if (type === 'project') {
+      container = document.getElementById('projectsContainer');
+      state.projects.push(count);
+    } else if (type === 'team') {
+      container = document.getElementById('teamContainer');
+      state.teamMembers.push(count);
+    }
+    
+    // Insert at original position
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+    const newElement = temp.firstElementChild;
+    
+    if (position < container.children.length) {
+      container.insertBefore(newElement, container.children[position]);
+    } else {
+      container.appendChild(newElement);
+    }
+    
+    // Add entry animation
+    setTimeout(() => {
+      newElement.style.animation = 'slideIn 0.4s ease';
+    }, 10);
+    
+    updateCounters();
+    hideUndoNotification();
+    addHapticFeedback();
+  }
+
+  // Add haptic feedback
+  function addHapticFeedback() {
+    if (navigator.vibrate) {
+      navigator.vibrate(50);
+    }
+    
+    // Visual feedback
+    document.body.classList.add('haptic-feedback');
+    setTimeout(() => {
+      document.body.classList.remove('haptic-feedback');
+    }, 150);
+  }
+
+  // Update scroll progress
+  function updateScrollProgress() {
+    const container = document.querySelector('.container');
+    if (!container) return;
+    
+    const containerTop = container.offsetTop;
+    const containerHeight = container.offsetHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Calculate how far we've scrolled through the container
+    const scrollPosition = scrollTop - containerTop;
+    const progress = Math.min(Math.max(scrollPosition / (containerHeight - window.innerHeight), 0), 1);
+    
+    state.scrollProgress = progress;
+    
+    // Update progress bar
+    scrollProgressBar.style.width = `${progress * 100}%`;
+    
+    // Show/hide progress container and section indicator
+    if (scrollTop > containerTop && progress < 1) {
+      scrollProgress.classList.add('active');
+      sectionIndicator.classList.add('active');
+    } else {
+      scrollProgress.classList.remove('active');
+      sectionIndicator.classList.remove('active');
+    }
+    
+    // Update active section indicator
+    updateActiveSection();
+  }
+
+  // Update active section based on scroll position
+  function updateActiveSection() {
+    const sections = document.querySelectorAll('.section');
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    let currentSection = 1;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.dataset.section;
+      
+      if (scrollTop >= sectionTop - 100 && scrollTop < sectionTop + sectionHeight - 100) {
+        currentSection = parseInt(sectionId);
+        section.classList.add('visible');
+      }
+    });
+    
+    // Update indicator dots
+    indicatorDots.forEach(dot => {
+      dot.classList.remove('active');
+      if (parseInt(dot.dataset.section) === currentSection) {
+        dot.classList.add('active');
+      }
+    });
+    
+    state.currentSection = currentSection;
+  }
+
+  // Scroll to section
+  function scrollToSection(sectionNumber) {
+    const section = document.getElementById(`section-${sectionNumber}`);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Handle form submission
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Show loading
+    loadingOverlay.classList.add('show');
+    
+    // Simulate API call
+    setTimeout(() => {
+      // Hide form, show success
+      formContent.style.display = 'none';
+      successMessage.classList.add('show');
+      loadingOverlay.classList.remove('show');
+      
+      // Smooth scroll to success message
+      successMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 1500);
+    
+    addHapticFeedback();
+  });
+
+  // Handle click events (event delegation)
+  document.addEventListener('click', function(e) {
+    // Handle remove buttons
+    if (e.target.classList.contains('remove-btn')) {
+      const type = e.target.dataset.type;
+      removeItem(e.target, type);
+    }
+    
+    // Handle add service button
+    if (e.target.id === 'addServiceBtn' || e.target.closest('#addServiceBtn')) {
+      addService();
+    }
+    
+    // Handle add project button
+    if (e.target.id === 'addProjectBtn' || e.target.closest('#addProjectBtn')) {
+      addProject();
+    }
+    
+    // Handle add team button
+    if (e.target.id === 'addTeamBtn' || e.target.closest('#addTeamBtn')) {
+      addTeamMember();
+    }
+    
+    // Handle indicator dots
+    if (e.target.classList.contains('indicator-dot')) {
+      const sectionNumber = e.target.dataset.section;
+      scrollToSection(sectionNumber);
+    }
+    
+    // Handle file upload interactions
+    if (e.target.closest('.file-upload input[type="file"]')) {
+      addHapticFeedback();
+    }
+  });
+
+  // Handle file upload drag and drop
+  document.addEventListener('dragover', function(e) {
+    if (e.target.closest('.file-upload')) {
+      e.preventDefault();
+      e.target.closest('.file-upload').classList.add('dragover');
+    }
+  });
+
+  document.addEventListener('dragleave', function(e) {
+    if (e.target.closest('.file-upload')) {
+      e.target.closest('.file-upload').classList.remove('dragover');
+    }
+  });
+
+  document.addEventListener('drop', function(e) {
+    if (e.target.closest('.file-upload')) {
+      e.preventDefault();
+      e.target.closest('.file-upload').classList.remove('dragover');
+      addHapticFeedback();
+    }
+  });
+
+  // Handle undo button
+  undoButton.addEventListener('click', undoRemove);
+
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCounters();
+    updateScrollProgress();
+    
+    // Animate sections as they come into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+  });
+
+  // Update scroll progress on scroll
+  window.addEventListener('scroll', updateScrollProgress);
+  window.addEventListener('resize', updateScrollProgress);
+
+  // Initialize first section as visible
+  document.querySelector('.section').classList.add('visible');
+</script>
+</body>
+</html>
